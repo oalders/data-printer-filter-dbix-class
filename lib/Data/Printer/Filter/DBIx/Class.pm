@@ -60,6 +60,8 @@ sub _add_prefix {
 
 __END__
 
+# ABSTRACT: Apply special Data::Printer filters to DBIx::Class objects
+
 =pod
 
 =head1 SYNOPSIS

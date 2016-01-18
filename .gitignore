@@ -1,0 +1,5 @@
+.build
+/Data-Printer*
+local
+*.swp
+.tidyall.d

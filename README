@@ -1,0 +1,35 @@
+NAME
+    Data::Printer::Filter::DBIx::Class - Apply special Data::Printer filters
+    to DBIx::Class objects
+
+VERSION
+    version 0.000001
+
+SYNOPSIS
+    In your program:
+
+        use Data::Printer filters => { -external => ['DB'] };
+
+    or, in your ".dataprinter" file:
+
+        { filters => { -external => ['DB'] } };
+
+DESCRIPTION
+    Huge chunks of this have been lifted directly from
+    Data::Printer::Filter::DB This filter differs in that it also adds the
+    values from "get_columns()" to the output. For a DBIx::Class::Row
+    object, the column values are return in the data. For a
+    DBIx::Class::ResultSet, all of the rows in the resultset are returned,
+    with the contents of "get_columns()" included. If you're dealing with
+    huge resultsets, this may not be what you want. Caveat emptor.
+
+AUTHOR
+    Olaf Alders <olaf@wundercounter.com>
+
+COPYRIGHT AND LICENSE
+    This software is Copyright (c) 2015 by MaxMind, Inc..
+
+    This is free software, licensed under:
+
+      The Artistic License 2.0 (GPL Compatible)
+
