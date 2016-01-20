@@ -8,11 +8,11 @@ VERSION
 SYNOPSIS
     In your program:
 
-        use Data::Printer filters => { -external => ['DB'] };
+        use Data::Printer filters => { -external => ['DBIx::Class'] };
 
     or, in your ".dataprinter" file:
 
-        { filters => { -external => ['DB'] } };
+        { filters => { -external => ['DBIx::Class'] } };
 
 DESCRIPTION
     Huge chunks of this have been lifted directly from

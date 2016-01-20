@@ -68,11 +68,11 @@ __END__
 
 In your program:
 
-    use Data::Printer filters => { -external => ['DB'] };
+    use Data::Printer filters => { -external => ['DBIx::Class'] };
 
 or, in your C<.dataprinter> file:
 
-    { filters => { -external => ['DB'] } };
+    { filters => { -external => ['DBIx::Class'] } };
 
 =head1 DESCRIPTION
 
