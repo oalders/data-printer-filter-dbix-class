@@ -4,6 +4,7 @@ use warnings;
 package Data::Printer::Filter::DBIx::Class;
 
 use Data::Printer::Filter;
+use Scalar::Util qw(blessed);
 use Term::ANSIColor;
 
 # DBIx::Class filters
@@ -18,7 +19,11 @@ filter '-class' => sub {
     if ( $obj->isa( 'DBIx::Class::ResultSet' ) ) {
         my @rows;
         while ( my $row = $obj->next ) {
-            push @rows, { $row->get_columns };
+
+            # Could be inflating to a HashRef
+            push @rows,
+                blessed( $row )
+                && $row->can( 'get_columns' ) ? { $row->get_columns } : $row;
         }
         return _add_prefix( $obj, $properties, @rows );
     }
