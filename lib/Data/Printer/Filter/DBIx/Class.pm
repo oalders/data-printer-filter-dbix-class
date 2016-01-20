@@ -21,8 +21,7 @@ filter '-class' => sub {
         while ( defined( my $row = $obj->next ) ) {
 
             # Could be inflating to a HashRef
-            push @rows,
-                blessed( $row )
+            push @rows, blessed( $row )
                 && $row->can( 'get_columns' ) ? { $row->get_columns } : $row;
         }
         return _add_prefix( $obj, $properties, @rows );
