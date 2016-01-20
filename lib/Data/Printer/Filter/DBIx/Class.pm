@@ -14,16 +14,16 @@ filter '-class' => sub {
         my %row = $obj->get_columns;
         return _add_prefix( $obj, $properties, \%row );
     }
-    elsif ( $obj->isa( 'DBIx::Class::ResultSet' ) ) {
+
+    if ( $obj->isa( 'DBIx::Class::ResultSet' ) ) {
         my @rows;
         while ( my $row = $obj->next ) {
             push @rows, { $row->get_columns };
         }
         return _add_prefix( $obj, $properties, @rows );
     }
-    else {
-        return;
-    }
+
+    return;
 };
 
 sub _add_prefix {
