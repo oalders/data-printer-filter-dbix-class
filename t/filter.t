@@ -21,11 +21,10 @@ sub next {
 
 sub result_class {'MyResultClass'}
 
-1;
-
 package DBIx::Class::ResultSet::HRI;
 
-our @ISA = ( 'DBIx::Class::ResultSet' );
+# Don't try to load the real DBIC from the filesystem
+use parent -norequire => 'DBIx::Class::ResultSet';
 use feature qw( state );
 
 sub next {
@@ -34,8 +33,6 @@ sub next {
     ++$counter;
     return { foo => 'bar', baz => 'qux', };
 }
-
-1;
 
 package DBIx::Class::Row;
 
@@ -48,12 +45,7 @@ sub get_columns {
     return ( foo => 'bar', baz => 'qux', );
 }
 
-1;
-
 package main;
-
-use strict;
-use warnings;
 
 use Test::More;
 
