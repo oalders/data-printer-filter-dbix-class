@@ -19,9 +19,9 @@ DESCRIPTION
     Data::Printer::Filter::DB This filter differs in that it also adds the
     values from "get_columns()" to the output. For a DBIx::Class::Row
     object, the column values are return in the data. For a
-    DBIx::Class::ResultSet, all of the rows in the resultset are returned,
+    DBIx::Class::ResultSet, all of the rows in the ResultSet are returned,
     with the contents of "get_columns()" included. If you're dealing with
-    huge resultsets, this may not be what you want. Caveat emptor.
+    huge ResultSets, this may not be what you want. Caveat emptor.
 
 AUTHOR
     Olaf Alders <olaf@wundercounter.com>

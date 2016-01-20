@@ -1,7 +1,7 @@
-package Data::Printer::Filter::DBIx::Class;
-
 use strict;
 use warnings;
+
+package Data::Printer::Filter::DBIx::Class;
 
 use Data::Printer::Filter;
 use Term::ANSIColor;
@@ -79,8 +79,8 @@ or, in your C<.dataprinter> file:
 Huge chunks of this have been lifted directly from L<Data::Printer::Filter::DB>
 This filter differs in that it also adds the values from C<get_columns()> to
 the output.  For a L<DBIx::Class::Row> object, the column values are return in
-the data.  For a L<DBIx::Class::ResultSet>, all of the rows in the resultset
+the data.  For a L<DBIx::Class::ResultSet>, all of the rows in the ResultSet
 are returned, with the contents of C<get_columns()> included.  If you're
-dealing with huge resultsets, this may not be what you want.  Caveat emptor.
+dealing with huge ResultSets, this may not be what you want.  Caveat emptor.
 
 =cut
