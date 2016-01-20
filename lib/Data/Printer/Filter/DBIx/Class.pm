@@ -31,9 +31,6 @@ sub _add_prefix {
     my $properties = shift;
     my @rows       = @_;
 
-    # Remove require once Data::Printer > 0.36 is released
-    require Data::Printer;
-
     my $str = colored( ref( $obj ), $properties->{color}{class} );
     $str .= ' (' . $obj->result_class . ')' if $obj->can( 'result_class' );
 
@@ -54,6 +51,10 @@ sub _add_prefix {
         $str .= newline . '}';
 
     }
+
+    # Remove require once Data::Printer > 0.36 is released
+    require Data::Printer;
+
     return $str . q{ } . Data::Printer::np( @rows );
 }
 1;
