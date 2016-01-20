@@ -18,7 +18,7 @@ filter '-class' => sub {
 
     if ( $obj->isa( 'DBIx::Class::ResultSet' ) ) {
         my @rows;
-        while ( my $row = $obj->next ) {
+        while ( defined( my $row = $obj->next ) ) {
 
             # Could be inflating to a HashRef
             push @rows,
