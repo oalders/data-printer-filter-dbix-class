@@ -1,6 +1,8 @@
 Revision history for Data-Printer-Filter-DBIx-Class
 
 {{$NEXT}}
+
+0.000002  2016-01-22 18:13:52-05:00 America/Toronto
     - Allow for resultsets which don't return objects (Reported by Peter
       Rabbitson)
     - Allow for objects which overload boolean comparisons (Reported by Peter
