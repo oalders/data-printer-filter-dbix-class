@@ -18,11 +18,16 @@ filter '-class' => sub {
 
     if ( $obj->isa( 'DBIx::Class::ResultSet' ) ) {
         my @rows;
+        my $row_limit
+            = defined $ENV{DDP_DBIC_ROW_LIMIT} ? $ENV{DDP_DBIC_ROW_LIMIT} : 5;
+
         while ( defined( my $row = $obj->next ) ) {
 
             # Could be inflating to a HashRef
             push @rows, blessed( $row )
                 && $row->can( 'get_columns' ) ? { $row->get_columns } : $row;
+
+            last if $row_limit && @rows == $row_limit;
         }
         return _add_prefix( $obj, $properties, @rows );
     }
