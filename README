@@ -3,7 +3,7 @@ NAME
     to DBIx::Class objects
 
 VERSION
-    version 0.000002
+    version 0.000003
 
 SYNOPSIS
     In your program:
@@ -19,9 +19,15 @@ DESCRIPTION
     Data::Printer::Filter::DB This filter differs in that it also adds the
     values from "get_columns()" to the output. For a DBIx::Class::Row
     object, the column values are return in the data. For a
-    DBIx::Class::ResultSet, all of the rows in the ResultSet are returned,
-    with the contents of "get_columns()" included. If you're dealing with
-    huge ResultSets, this may not be what you want. Caveat emptor.
+    DBIx::Class::ResultSet, by default the first 5 rows in the ResultSet are
+    returned, with the contents of "get_columns()" included. You can change
+    this behaviour via $ENV{DDP_DBIC_ROW_LIMIT}.
+
+        # Return up to 1,000 rows per ResultSet
+        $ENV{DDP_DBIC_ROW_LIMIT} = 1000;
+
+        # Return every row from every ResultSet
+        $ENV{DDP_DBIC_ROW_LIMIT} = 0;
 
 AUTHOR
     Olaf Alders <olaf@wundercounter.com>
