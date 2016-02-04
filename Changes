@@ -1,6 +1,8 @@
 Revision history for Data-Printer-Filter-DBIx-Class
 
 {{$NEXT}}
+
+0.000003  2016-02-04 15:19:07-05:00 America/Toronto
     - $ENV{DDP_DBIC_ROW_LIMIT} can be used to control how many ResultSet rows
       get printed for a given object.
 
