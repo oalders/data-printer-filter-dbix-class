@@ -13,7 +13,7 @@ filter '-class' => sub {
 
     if ( $obj->isa( 'DBIx::Class::Row' ) ) {
         my %row = $obj->get_columns;
-        return _add_prefix( $obj, $properties, \%row );
+        return _add_prefix( $obj, $properties, [ \%row ] );
     }
 
     if ( $obj->isa( 'DBIx::Class::ResultSet' ) ) {
@@ -29,7 +29,13 @@ filter '-class' => sub {
 
             last if $row_limit && @rows == $row_limit;
         }
-        return _add_prefix( $obj, $properties, @rows );
+        my $msg = 'Showing all results';
+        if ( $row_limit && @rows == $row_limit ) {
+            $msg = sprintf( 'Showing first %i out of %i results.',
+                scalar @rows, $obj->count );
+        }
+
+        return _add_prefix( $obj, $properties, \@rows, $msg );
     }
 
     return;
@@ -38,7 +44,8 @@ filter '-class' => sub {
 sub _add_prefix {
     my $obj        = shift;
     my $properties = shift;
-    my @rows       = @_;
+    my $rows       = shift;
+    my $msg        = shift;
 
     my $str = colored( ref( $obj ), $properties->{color}{class} );
     $str .= ' (' . $obj->result_class . ')' if $obj->can( 'result_class' );
@@ -64,7 +71,8 @@ sub _add_prefix {
     # Remove require once Data::Printer > 0.36 is released
     require Data::Printer;
 
-    return $str . q{ } . Data::Printer::np( @rows );
+    $str .= ' (' . $msg . ')' if $msg;
+    return $str . q{ } . Data::Printer::np( $rows );
 }
 1;
 
@@ -89,8 +97,14 @@ or, in your C<.dataprinter> file:
 Huge chunks of this have been lifted directly from L<Data::Printer::Filter::DB>
 This filter differs in that it also adds the values from C<get_columns()> to
 the output.  For a L<DBIx::Class::Row> object, the column values are return in
-the data.  For a L<DBIx::Class::ResultSet>, all of the rows in the ResultSet
-are returned, with the contents of C<get_columns()> included.  If you're
-dealing with huge ResultSets, this may not be what you want.  Caveat emptor.
+the data.  For a L<DBIx::Class::ResultSet>, by default the first 5 rows in the
+ResultSet are returned, with the contents of C<get_columns()> included.  You
+can change this behaviour via C<$ENV{DDP_DBIC_ROW_LIMIT}>.
+
+    # Return up to 1,000 rows per ResultSet
+    $ENV{DDP_DBIC_ROW_LIMIT} = 1000;
+
+    # Return every row from every ResultSet
+    $ENV{DDP_DBIC_ROW_LIMIT} = 0;
 
 =cut
