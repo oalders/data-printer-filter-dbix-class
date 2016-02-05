@@ -1,6 +1,8 @@
 Revision history for Data-Printer-Filter-DBIx-Class
 
 {{$NEXT}}
+
+0.000004  2016-02-05 12:10:57-05:00 America/Toronto
     - Bumps minimum version of Data::Printer to 0.38
 
 0.000003  2016-02-04 15:19:07-05:00 America/Toronto
