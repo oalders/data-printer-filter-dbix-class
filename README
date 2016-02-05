@@ -3,7 +3,7 @@ NAME
     to DBIx::Class objects
 
 VERSION
-    version 0.000003
+    version 0.000004
 
 SYNOPSIS
     In your program:
@@ -33,7 +33,7 @@ AUTHOR
     Olaf Alders <olaf@wundercounter.com>
 
 COPYRIGHT AND LICENSE
-    This software is Copyright (c) 2015 by MaxMind, Inc.
+    This software is Copyright (c) 2016 by MaxMind, Inc.
 
     This is free software, licensed under:
 

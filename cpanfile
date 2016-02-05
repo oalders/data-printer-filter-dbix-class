@@ -1,4 +1,4 @@
-requires "Data::Printer" => "0.36";
+requires "Data::Printer" => "0.38";
 requires "Data::Printer::Filter" => "0";
 requires "Scalar::Util" => "0";
 requires "Term::ANSIColor" => "0";
@@ -11,6 +11,7 @@ on 'build' => sub {
 };
 
 on 'test' => sub {
+  requires "Data::Printer" => "0.38";
   requires "Test::More" => "0";
   requires "feature" => "0";
   requires "parent" => "0";
