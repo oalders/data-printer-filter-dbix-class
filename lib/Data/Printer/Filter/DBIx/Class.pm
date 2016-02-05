@@ -68,11 +68,8 @@ sub _add_prefix {
 
     }
 
-    # Remove require once Data::Printer > 0.36 is released
-    require Data::Printer;
-
     $str .= ' (' . $msg . ')' if $msg;
-    return $str . q{ } . Data::Printer::np( $rows );
+    return $str . q{ } . np( $rows );
 }
 1;
 
