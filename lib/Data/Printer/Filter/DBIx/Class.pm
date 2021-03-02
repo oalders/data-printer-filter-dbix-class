@@ -75,9 +75,14 @@ sub _add_prefix {
 
 __END__
 
-# ABSTRACT: Apply special Data::Printer filters to DBIx::Class objects
+# ABSTRACT: (DEPRECATED) Apply special Data::Printer filters to DBIx::Class objects
 
 =pod
+
+=head1 DEPRECATED
+
+This module breaks with the 1.x release of L<Data::Printer>, but that's ok. Use
+L<Data::Printer::Filter::DB> instead.
 
 =head1 SYNOPSIS
 
