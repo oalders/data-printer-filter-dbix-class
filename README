@@ -3,7 +3,7 @@ NAME
     Data::Printer filters to DBIx::Class objects
 
 VERSION
-    version 0.000004
+    version 0.000005
 
 SYNOPSIS
     In your program:
